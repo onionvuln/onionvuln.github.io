@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="OnionVuln AI - Deep Learning powered website design assistant with real-time suggestions.">
+  <title>OnionVuln AI | Deep Learning Design Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ai-assistant.css">
+</head>
+<body class="scanlines">
+  <div class="page-wrapper">
+    
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo glitch">
+          <span class="nav-logo-icon">◎</span>
+          <span>onionvuln</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="social.html" class="nav-link">Social</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="checkinfo.html" class="nav-link">Check Info</a></li>
+          <li><a href="onionvuln-ai.html" class="nav-link active">AI Assistant</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <!-- Page Header -->
+        <div class="ai-page-header">
+          <div class="ai-logo-container">
+            <div class="ai-logo-ring"></div>
+            <div class="ai-logo-ring"></div>
+            <div class="ai-logo-ring"></div>
+            <div class="ai-logo-core">AI</div>
+          </div>
+          <p class="section-label">// Neural Network v3.0</p>
+          <h1 class="section-title">OnionVuln <span class="accent">AI</span></h1>
+          <p class="section-desc">
+            Advanced deep learning system for intelligent website design suggestions. 
+            Powered by neural networks and real-time data analysis.
+          </p>
+        </div>
+
+        <!-- AI Neural Network Visualization -->
+        <div class="neural-network-viz" id="neural-viz">
+          <canvas id="neural-canvas"></canvas>
+          <div class="network-stats">
+            <div class="stat-item">
+              <span class="stat-value" id="neurons-count">0</span>
+              <span class="stat-label">Active Neurons</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="connections-count">0</span>
+              <span class="stat-label">Connections</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="learning-rate">0.00</span>
+              <span class="stat-label">Learning Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Chat Interface -->
+        <div class="ai-chat-interface">
+          <div class="ai-chat-header">
+            <div class="ai-status-indicator">
+              <span class="status-dot"></span>
+              <span class="status-text" id="ai-connection-status">Initializing Neural Network...</span>
+            </div>
+            <div class="ai-model-info">
+              <span class="model-name">OnionVuln-GPT</span>
+              <span class="model-version">v3.0.1</span>
+            </div>
+          </div>
+
+          <div class="ai-chat-messages" id="ai-chat-messages">
+            <!-- Messages will be populated by JS -->
+          </div>
+
+          <div class="ai-chat-suggestions" id="ai-suggestions-bar">
+            <button class="ai-suggestion-btn" data-prompt="Change colors to cyberpunk theme">Cyberpunk Theme</button>
+            <button class="ai-suggestion-btn" data-prompt="Make it more minimal and clean">Minimal Design</button>
+            <button class="ai-suggestion-btn" data-prompt="Add neon glow effects">Neon Effects</button>
+            <button class="ai-suggestion-btn" data-prompt="Suggest better animations">Better Animations</button>
+            <button class="ai-suggestion-btn" data-prompt="Make it mobile friendly">Mobile Optimize</button>
+          </div>
+
+          <div class="ai-chat-input-area">
+            <div class="input-wrapper">
+              <textarea 
+                id="ai-prompt-input" 
+                class="ai-prompt-input" 
+                placeholder="Describe your design vision... (e.g., 'Make the website more futuristic with blue neon')"
+                rows="2"
+              ></textarea>
+              <div class="input-actions">
+                <span class="char-count" id="char-count">0/500</span>
+                <button class="voice-input-btn" id="voice-input-btn" title="Voice Input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                    <line x1="8" y1="23" x2="16" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <button class="ai-send-btn" id="ai-send-btn">
+              <span>Generate</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Design Preview -->
+        <div class="design-preview-section">
+          <h2 class="preview-title">
+            <span class="accent">//</span> Live Design Preview
+          </h2>
+          <div class="preview-controls">
+            <button class="preview-control-btn active" data-view="desktop">Desktop</button>
+            <button class="preview-control-btn" data-view="tablet">Tablet</button>
+            <button class="preview-control-btn" data-view="mobile">Mobile</button>
+          </div>
+          <div class="design-preview-frame" id="design-preview">
+            <div class="preview-content" id="preview-content">
+              <div class="preview-header-elem">Header</div>
+              <div class="preview-hero-elem">Hero Section</div>
+              <div class="preview-cards-elem">
+                <div class="preview-card">Card 1</div>
+                <div class="preview-card">Card 2</div>
+                <div class="preview-card">Card 3</div>
+              </div>
+              <div class="preview-footer-elem">Footer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Generated Themes -->
+        <div class="ai-themes-section">
+          <h2 class="themes-title">
+            <span class="accent">//</span> AI Generated Themes
+          </h2>
+          <p class="themes-desc">Select a theme to instantly transform your website experience</p>
+          
+          <div class="themes-grid" id="themes-grid">
+            <div class="theme-card" data-theme="matrix">
+              <div class="theme-preview matrix-preview"></div>
+              <div class="theme-info">
+                <h3>Matrix</h3>
+                <p>Classic green terminal aesthetic</p>
+              </div>
+            </div>
+            <div class="theme-card" data-theme="cyber-pink">
+              <div class="theme-preview pink-preview"></div>
+              <div class="theme-info">
+                <h3>Cyber Pink</h3>
+                <p>Vibrant neon cyberpunk vibes</p>
+              </div>
+            </div>
+            <div class="theme-card" data-theme="ocean-blue">
+              <div class="theme-preview blue-preview"></div>
+              <div class="theme-info">
+                <h3>Ocean Blue</h3>
+                <p>Cool and calming depths</p>
+              </div>
+            </div>
+            <div class="theme-card" data-theme="sunset-orange">
+              <div class="theme-preview orange-preview"></div>
+              <div class="theme-info">
+                <h3>Sunset Orange</h3>
+                <p>Warm and energetic tones</p>
+              </div>
+            </div>
+            <div class="theme-card" data-theme="royal-purple">
+              <div class="theme-preview purple-preview"></div>
+              <div class="theme-info">
+                <h3>Royal Purple</h3>
+                <p>Elegant and mysterious</p>
+              </div>
+            </div>
+            <div class="theme-card" data-theme="blood-red">
+              <div class="theme-preview red-preview"></div>
+              <div class="theme-info">
+                <h3>Blood Red</h3>
+                <p>Intense hacker aesthetic</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Learning Stats -->
+        <div class="ai-stats-section">
+          <h2 class="stats-title">
+            <span class="accent">//</span> Deep Learning Analytics
+          </h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20V10"/>
+                  <path d="M18 20V4"/>
+                  <path d="M6 20v-4"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" id="designs-analyzed">0</span>
+                <span class="stat-desc">Designs Analyzed</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" id="response-time">0ms</span>
+                <span class="stat-desc">Avg Response Time</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" id="accuracy-rate">0%</span>
+                <span class="stat-desc">Accuracy Rate</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number" id="users-helped">0</span>
+                <span class="stat-desc">Users Assisted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p class="footer-text">© 2025 onionvuln. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="https://github.com/onionvuln" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  
+  <script src="script.js"></script>
+  <script src="theme-manager.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="ai-assistant.js"></script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Advanced system analysis with VPN/Tor detection, security alerts, and real-time hacker news.">
+  <title>Check Info | onionvuln - Advanced System Intelligence</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="checkinfo.css">
+</head>
+<body class="scanlines">
+  <div class="page-wrapper">
+    
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo glitch">
+          <span class="nav-logo-icon">◎</span>
+          <span>onionvuln</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="social.html" class="nav-link">Social</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="checkinfo.html" class="nav-link active">Check Info</a></li>
+          <li><a href="onionvuln-ai.html" class="nav-link">AI Assistant</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <!-- Page Header -->
+        <div class="check-header">
+          <p class="section-label">// Advanced System Analysis</p>
+          <h1 class="section-title">Deep <span class="accent">Intelligence</span> Scan</h1>
+          <p class="section-desc">
+            Comprehensive device fingerprinting, VPN/Tor detection, and real-time security intelligence.
+          </p>
+        </div>
+
+        <!-- Security Alert Banner -->
+        <div class="security-alert-banner" id="security-alert">
+          <div class="alert-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M12 8v4"/>
+              <path d="M12 16h.01"/>
+            </svg>
+          </div>
+          <div class="alert-content">
+            <span class="alert-title">Security Analysis Running...</span>
+            <span class="alert-text" id="alert-message">Scanning network configuration</span>
+          </div>
+          <div class="alert-status" id="alert-status">
+            <span class="status-badge scanning">Scanning</span>
+          </div>
+        </div>
+
+        <!-- VPN/Tor Detection Panel -->
+        <div class="detection-panel" id="vpn-detection-panel">
+          <div class="detection-header">
+            <h2 class="detection-title">
+              <span class="detection-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </span>
+              Privacy & Anonymity Detection
+            </h2>
+          </div>
+          <div class="detection-grid">
+            <div class="detection-item">
+              <span class="detection-label">VPN Status</span>
+              <span class="detection-value" id="vpn-status">Analyzing...</span>
+              <span class="detection-indicator" id="vpn-indicator"></span>
+            </div>
+            <div class="detection-item">
+              <span class="detection-label">Tor Network</span>
+              <span class="detection-value" id="tor-status">Checking...</span>
+              <span class="detection-indicator" id="tor-indicator"></span>
+            </div>
+            <div class="detection-item">
+              <span class="detection-label">Proxy Detection</span>
+              <span class="detection-value" id="proxy-status">Scanning...</span>
+              <span class="detection-indicator" id="proxy-indicator"></span>
+            </div>
+            <div class="detection-item">
+              <span class="detection-label">Real IP Analysis</span>
+              <span class="detection-value" id="real-ip-status">Computing...</span>
+              <span class="detection-indicator" id="realip-indicator"></span>
+            </div>
+          </div>
+          <div class="detection-details" id="detection-details">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="info-grid">
+          <!-- Network Info Card - Enhanced -->
+          <div class="info-card" id="network-card">
+            <div class="info-card-header">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </span>
+              <h2 class="info-card-title">Network Intelligence</h2>
+            </div>
+            <div class="info-card-body">
+              <div class="info-row">
+                <span class="info-label">Public IP</span>
+                <span class="info-value" id="ip-address">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">IPv6 Address</span>
+                <span class="info-value" id="ip-v6">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Estimated Real IP</span>
+                <span class="info-value" id="real-ip">Analyzing...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Location</span>
+                <span class="info-value" id="ip-location">Locating...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">ISP / ASN</span>
+                <span class="info-value" id="ip-isp">Identifying...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Timezone</span>
+                <span class="info-value" id="ip-timezone">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Connection Type</span>
+                <span class="info-value" id="connection-type">Analyzing...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Downlink Speed</span>
+                <span class="info-value" id="downlink-speed">Measuring...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Network RTT</span>
+                <span class="info-value" id="network-rtt">Testing...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Browser Info Card - Enhanced -->
+          <div class="info-card" id="browser-card">
+            <div class="info-card-header">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <line x1="21.17" y1="8" x2="12" y2="8"/>
+                  <line x1="3.95" y1="6.06" x2="8.54" y2="14"/>
+                  <line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
+                </svg>
+              </span>
+              <h2 class="info-card-title">Browser Fingerprint</h2>
+            </div>
+            <div class="info-card-body">
+              <div class="info-row">
+                <span class="info-label">Browser</span>
+                <span class="info-value" id="browser-name">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Version</span>
+                <span class="info-value" id="browser-version">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Engine</span>
+                <span class="info-value" id="browser-engine">Analyzing...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Cookies</span>
+                <span class="info-value" id="cookies-enabled">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">JavaScript</span>
+                <span class="info-value status-active">Enabled</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Do Not Track</span>
+                <span class="info-value" id="dnt-status">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Language</span>
+                <span class="info-value" id="browser-language">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Timezone Offset</span>
+                <span class="info-value" id="tz-offset">Calculating...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Canvas Fingerprint</span>
+                <span class="info-value" id="canvas-fp">Generating...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">WebGL Hash</span>
+                <span class="info-value" id="webgl-hash">Computing...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Device Info Card - Enhanced -->
+          <div class="info-card" id="device-card">
+            <div class="info-card-header">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </span>
+              <h2 class="info-card-title">Device Intelligence</h2>
+            </div>
+            <div class="info-card-body">
+              <div class="info-row">
+                <span class="info-label">Device Type</span>
+                <span class="info-value" id="device-type">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Operating System</span>
+                <span class="info-value" id="os-name">Analyzing...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">OS Version</span>
+                <span class="info-value" id="os-version">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Platform</span>
+                <span class="info-value" id="device-platform">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">CPU Cores</span>
+                <span class="info-value" id="cpu-cores">Counting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Memory (RAM)</span>
+                <span class="info-value" id="device-memory">Measuring...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">GPU Renderer</span>
+                <span class="info-value" id="gpu-renderer">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Touch Support</span>
+                <span class="info-value" id="touch-support">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Battery Status</span>
+                <span class="info-value" id="battery-status">Querying...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Device Plugins</span>
+                <span class="info-value" id="plugins-count">Scanning...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen Info Card - Enhanced -->
+          <div class="info-card" id="screen-card">
+            <div class="info-card-header">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </span>
+              <h2 class="info-card-title">Display Analysis</h2>
+            </div>
+            <div class="info-card-body">
+              <div class="info-row">
+                <span class="info-label">Screen Resolution</span>
+                <span class="info-value" id="screen-resolution">Measuring...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Available Screen</span>
+                <span class="info-value" id="available-screen">Calculating...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Viewport Size</span>
+                <span class="info-value" id="viewport-size">Calculating...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Color Depth</span>
+                <span class="info-value" id="color-depth">Detecting...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Pixel Ratio</span>
+                <span class="info-value" id="pixel-ratio">Measuring...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Orientation</span>
+                <span class="info-value" id="screen-orientation">Checking...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">HDR Support</span>
+                <span class="info-value" id="hdr-support">Testing...</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Color Gamut</span>
+                <span class="info-value" id="color-gamut">Analyzing...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security News Section -->
+        <div class="security-news-section">
+          <div class="news-header">
+            <h2 class="news-title">
+              <span class="accent">//</span> Live Security Intelligence
+            </h2>
+            <div class="news-status">
+              <span class="live-dot"></span>
+              <span>Live Feed</span>
+            </div>
+          </div>
+          <div class="news-grid" id="security-news">
+            <div class="news-loading">
+              <div class="loading-spinner"></div>
+              <span>Fetching security news...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Design Suggestion Panel -->
+        <div class="ai-design-panel" id="ai-panel">
+          <div class="ai-panel-header">
+            <div class="ai-brain-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a9 9 0 0 1 9 9c0 3.1-1.6 5.8-4 7.4V21a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-2.6A9 9 0 0 1 12 2z"/>
+                <path d="M9 22v-1M15 22v-1M12 18v-4M8 12h.01M16 12h.01M10 9h4"/>
+              </svg>
+            </div>
+            <div class="ai-panel-title">
+              <h2>Neural Design Engine</h2>
+              <p id="ai-learning-status">Analyzing your profile...</p>
+            </div>
+          </div>
+
+          <!-- Learning Progress -->
+          <div class="ai-learning-progress" id="learning-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-text" id="progress-text">Initializing deep learning...</span>
+          </div>
+
+          <!-- AI Analysis Results -->
+          <div class="ai-analysis hidden" id="ai-analysis">
+            <h3>Analysis Complete</h3>
+            <div class="analysis-metrics">
+              <div class="metric">
+                <span class="metric-label">Device Optimization</span>
+                <span class="metric-value" id="device-score">--</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Color Preference</span>
+                <span class="metric-value" id="color-preference">--</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Animation Level</span>
+                <span class="metric-value" id="animation-level">--</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Privacy Score</span>
+                <span class="metric-value" id="privacy-score">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Design Suggestions -->
+          <div class="ai-suggestions hidden" id="ai-suggestions">
+            <h3>Personalized Design Suggestions</h3>
+            <p class="suggestion-intro">Based on your device, time of day, and browsing patterns, we recommend:</p>
+            
+            <div class="suggestion-cards" id="suggestion-cards">
+              <!-- Populated by JS -->
+            </div>
+
+            <div class="apply-theme-section">
+              <p>Would you like to apply these design changes?</p>
+              <div class="theme-buttons">
+                <button class="btn btn-primary" id="apply-theme-btn">Apply Theme</button>
+                <button class="btn btn-ghost" id="skip-theme-btn">Keep Original</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Details Accordion -->
+        <div class="tech-details">
+          <button class="tech-toggle" id="tech-toggle">
+            <span>View Raw Technical Data</span>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div class="tech-content hidden" id="tech-content">
+            <div class="tech-section">
+              <h4>Full User Agent</h4>
+              <code id="user-agent">Loading...</code>
+            </div>
+            <div class="tech-section">
+              <h4>WebGL Renderer</h4>
+              <code id="webgl-renderer">Detecting...</code>
+            </div>
+            <div class="tech-section">
+              <h4>Audio Fingerprint</h4>
+              <code id="audio-fingerprint">Generating...</code>
+            </div>
+            <div class="tech-section">
+              <h4>Fonts Detected</h4>
+              <code id="fonts-detected">Scanning...</code>
+            </div>
+            <div class="tech-section">
+              <h4>WebRTC Leak Check</h4>
+              <code id="webrtc-leak">Testing...</code>
+            </div>
+            <div class="tech-section">
+              <h4>Supported Media Types</h4>
+              <code id="media-types">Scanning...</code>
+            </div>
+            <div class="tech-section">
+              <h4>Browser Features</h4>
+              <div class="feature-grid" id="feature-grid">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p class="footer-text">© 2025 onionvuln. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="https://github.com/onionvuln" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  
+  <script src="script.js"></script>
+  <script src="theme-manager.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="checkinfo-enhanced.js"></script>
+</body>
+</html>
